@@ -15,7 +15,7 @@ module.exports = (grunt) ->
             styles:
                 files: [
                     src: './src/styles/angular-social.css'
-                    dest: './angular-social.css'
+                    dest: './css/angular-social.css'
                 ]
             images:
                 files: [
@@ -44,8 +44,8 @@ module.exports = (grunt) ->
 
         imageEmbed:
             css:
-                src: [ "angular-social.css" ]
-                dest: "angular-social.css"
+                src: [ "./css/angular-social.css" ]
+                dest: "./css/angular-social.css"
                 baseDir: './'
 
         less:
@@ -56,7 +56,7 @@ module.exports = (grunt) ->
         cssmin:
             css:
                 files:
-                    'angular-social.css': 'angular-social.css'
+                    'angular-social.css': './css/angular-social.css'
 
         ngTemplateCache:
             views:
