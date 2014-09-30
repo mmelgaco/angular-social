@@ -123,7 +123,7 @@ app.directive('ngSocialFacebook', function() {
 
     var options = {
         counter: {
-            url: 'http://graph.facebook.com/fql?q=SELECT+total_count+FROM+link_stat+WHERE+url%3D%22{url}%22' +
+            url: 'https://graph.facebook.com/fql?q=SELECT+total_count+FROM+link_stat+WHERE+url%3D%22{url}%22' +
                  '&callback=JSON_CALLBACK',
             getNumber: function(data) {
                 if(data) {
@@ -133,7 +133,7 @@ app.directive('ngSocialFacebook', function() {
             }
         },
         popup: {
-            url: 'http://www.facebook.com/sharer/sharer.php?u={url}',
+            url: 'https://www.facebook.com/sharer/sharer.php?u={url}',
             width: 600,
             height: 500
         },
@@ -172,13 +172,13 @@ app.directive('ngSocialTwitter', function() {
 
     var options = {
         counter: {
-            url: 'http://urls.api.twitter.com/1/urls/count.json?url={url}&callback=JSON_CALLBACK',
+            url: 'https://urls.api.twitter.com/1/urls/count.json?url={url}&callback=JSON_CALLBACK',
             getNumber: function(data) {
                 return data.count;
             }
         },
         popup: {
-            url: 'http://twitter.com/intent/tweet?url={url}&text={title}',
+            url: 'https://twitter.com/intent/tweet?url={url}&text={title}',
             width: 600,
             height: 450
         },
@@ -224,7 +224,7 @@ app.directive('ngSocialGooglePlus', ['$parse', function($parse) {
     var protocol = location.protocol === 'https:' ? 'https:' : 'http:',
         options = {
             counter: {
-                url: protocol === 'http:' ? 'http://share.yandex.ru/gpp.xml?url={url}' : undefined,
+                url: protocol === 'http:' ? 'https://share.yandex.ru/gpp.xml?url={url}' : undefined,
                 getNumber: function(data) {
                     return data.count;
                 },
@@ -433,13 +433,13 @@ angular.module("ngSocial").directive('ngSocialMailru', function() {
 angular.module("ngSocial").directive('ngSocialPinterest', function() {
     var options = {
         counter: {
-            url: 'http://api.pinterest.com/v1/urls/count.json?url={url}&callback=JSON_CALLBACK',
+            url: 'https://api.pinterest.com/v1/urls/count.json?url={url}&callback=JSON_CALLBACK',
             getNumber: function(data) {
                 return data.count;
             }
         },
         popup: {
-            url: 'http://pinterest.com/pin/create/button/?url={url}&description={title}&media={image}',
+            url: 'https://pinterest.com/pin/create/button/?url={url}&description={title}&media={image}',
             width: 630,
             height: 270
         }

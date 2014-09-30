@@ -3,13 +3,13 @@
 angular.module("ngSocial").directive('ngSocialPinterest', function() {
     var options = {
         counter: {
-            url: 'http://api.pinterest.com/v1/urls/count.json?url={url}&callback=JSON_CALLBACK',
+            url: 'https://api.pinterest.com/v1/urls/count.json?url={url}&callback=JSON_CALLBACK',
             getNumber: function(data) {
                 return data.count;
             }
         },
         popup: {
-            url: 'http://pinterest.com/pin/create/button/?url={url}&description={title}&media={image}',
+            url: 'https://pinterest.com/pin/create/button/?url={url}&description={title}&media={image}',
             width: 630,
             height: 270
         }
