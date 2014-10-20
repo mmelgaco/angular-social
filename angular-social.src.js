@@ -97,13 +97,19 @@ app.directive('ngSocialButtons', ['$compile', '$q', '$parse', '$http', '$locatio
                             if (options.counter.get) {
                                 options.counter.get(url, def, $http);
                             } else {
-                                $http.jsonp(url).success(function (res) {
-                                    if (options.counter.getNumber) {
-                                        def.resolve(options.counter.getNumber(res));
-                                    } else {
-                                        def.resolve(res);
-                                    }
-                                });
+                                try {
+                                    $http.jsonp(url).success(function (res) {
+                                        if (options.counter.getNumber) {
+                                            def.resolve(options.counter.getNumber(res));
+                                        } else {
+                                            def.resolve(res);
+                                        }
+                                    }).error(function (err) {
+                                        console.log('error getting share count on ' + url + ' ' + err);
+                                    });
+                                }catch(e){
+                                    console.log(e);
+                                }
                             }
                         }
                         return def.promise;
@@ -172,7 +178,7 @@ app.directive('ngSocialTwitter', function() {
 
     var options = {
         counter: {
-            url: 'https://urls.api.twitter.com/1/urls/count.json?url={url}&callback=JSON_CALLBACK',
+            url: 'http://urls.api.twitter.com/1/urls/count.json?url={url}&callback=JSON_CALLBACK',
             getNumber: function(data) {
                 return data.count;
             }
@@ -224,7 +230,7 @@ app.directive('ngSocialGooglePlus', ['$parse', function($parse) {
     var protocol = location.protocol === 'https:' ? 'https:' : 'http:',
         options = {
             counter: {
-                url: protocol === 'http:' ? 'https://share.yandex.ru/gpp.xml?url={url}' : undefined,
+                url: protocol === 'http:' ? 'http://share.yandex.ru/gpp.xml?url={url}' : undefined,
                 getNumber: function(data) {
                     return data.count;
                 },
