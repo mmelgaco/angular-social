@@ -1,10 +1,10 @@
 function template(tmpl, context, filter) {
     'use strict';
 
-    return tmpl.replace(/\{([^\}]+)\}/g, function (m, key) {
+    return tmpl?tmpl.replace(/\{([^\}]+)\}/g, function (m, key) {
         // If key don't exists in the context we should keep template tag as is
         return key in context ? (filter ? filter(context[key]) : context[key]) : m;
-    });
+    }):tmpl;
 }
 
 var app = angular.module('ngSocial', []);
