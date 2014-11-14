@@ -86,7 +86,7 @@ app.directive('ngSocialButtons', ['$compile', '$q', '$parse', '$http', '$locatio
                         }
                     },
                     getCount: function (options) {
-                        var def = $q.defer();
+                        /*var def = $q.defer();
                         var urlOptions = options.urlOptions || {};
                         urlOptions.url = getUrl();
                         urlOptions.title = $scope.title;
@@ -112,7 +112,8 @@ app.directive('ngSocialButtons', ['$compile', '$q', '$parse', '$http', '$locatio
                                 }
                             }
                         }
-                        return def.promise;
+                        return def.promise;*/
+                        return '';
                     },
                     makeUrl: function (url, context) {
                         return template(url, context, encodeURIComponent);
